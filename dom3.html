@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+    
+</body>
+
+<script>
+
+    function add_lang(lang){
+
+        const li = document.createElement('li')
+        li.innerText = `${lang}`
+        document.querySelector('.language').appendChild(li)
+        
+
+        
+    }
+
+    function add_lang_opt(lang){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(lang))
+        document.querySelector('.language').appendChild(li)
+
+    }
+    
+    add_lang("Python")
+    add_lang("Java")
+    add_lang_opt("Typescript")
+
+    // const root =  document.querySelector('.language')
+    // const ch = root.firstElementChild
+    // console.log(ch.nextElementSibling);
+
+    // Edit
+    function edit(com,lang){
+        const li=document.querySelector(com)
+        li.innerHTML=lang
+    } 
+
+    function edit_op(com,lang){
+        const li=document.querySelector(com)
+        const newli = document.createElement('li')
+        newli.textContent=lang
+        li.replaceWith(newli)
+    }
+    edit("li:nth-child(1)","Rescript")
+    edit_op("li:nth-child(3)","golang")
+
+
+    
+
+</script>
+</html>

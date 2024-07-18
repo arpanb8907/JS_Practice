@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>continue with dom learning</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+    
+</body>
+
+<script>
+    creatediv('dom learning',"class1","let's continue with dom")
+    creatediv('lecture 1',"lectures","keep learning")
+    creatediv('lecture 2',"handson","coding")
+    
+    function creatediv(mytitle,class_name,text){
+        const div=document.createElement('div')
+        div.className=class_name
+        div.id =1
+        div.setAttribute("title",mytitle)
+        //div.innerText="let's continue with dom"
+
+        const addtext = document.createTextNode(text)
+        div.append(addtext)
+
+        document.body.appendChild(div)
+
+        //console.log(div);
+    }
+    
+    
+</script>
+</html>
