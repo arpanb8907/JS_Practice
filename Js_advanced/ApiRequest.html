@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body style="background-color: #212121; color: #fff;" >
+    <!-- 0	UNSENT	Client has been created. open() not called yet.
+    1 	OPENED	open() has been called.
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+    3	LOADING	Downloading; responseText holds partial data.
+    4	DONE	The operation is complete. -->
+
+    <div class="container">
+        <div>
+            <h1>Get your github data on finger click</h1>
+            
+        </div>
+        <div class="card">
+            <img id="avatar" src="" alt="Avatar" style="width:100%">
+            <div class="container">
+              <h4><b>John Doe</b></h4>
+              <p>Architect & Engineer</p>
+            </div>
+        </div>
+        
+        <button type="button" class="button">Click me!</button>
+        
+        
+    </div>
+
+    
+    
+</body>
+
+<script>
+    const url = 'https://api.github.com/users/arpanb8907'
+    
+    document.querySelector(".button").addEventListener('click',(e)=>{
+
+        console.log("hello");
+
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET',url)
+       
+        xhr.onreadystatechange = function(){
+                //console.log(xhr.readyState);
+                
+                if(xhr.readyState===4){
+
+                    const data = JSON.parse(this.responseText)
+                    const imgurl = data.avatar_url
+                    //console.log(data);
+                    const imgelement = document.getElementById('avatar')
+                    const name = data.name
+                    const bio = data.bio
+
+                    imgelement.src = imgurl
+
+
+                    var infoContainer = document.querySelector(".card .container");
+                    infoContainer.innerHTML = `
+                        <h4><b>${name}</b></h4>
+                        <p>${bio.slice(0,Math.min(25,bio.length))}......</p>
+                    `;
+                    
+                }
+                
+        }
+        xhr.send()
+    })
+    
+
+</script>
+</html>
